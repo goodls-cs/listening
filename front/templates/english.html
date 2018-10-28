@@ -1,0 +1,88 @@
+{% extends "index.html" %}
+{% load static %}
+{% block main %}
+<div class="container">
+    <div class="row clearfix" style="margin-top:20px">
+        <div class="col-md-12 column">
+            <h2>
+                英语听写练习
+            </h2>
+            <p>
+                根据《小学英语》3年级课本定制的语音听写。
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th colspan="4">
+                        <div class="custom-control-inline">
+                            <div class="item__circle" type="button" id="play">
+                                <svg t="1538911272969" id="play-avg" class="item_icon" viewBox="0 0 1024 1024"
+                                     version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1155"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <path d="M512 967.111111c-250.311111 0-455.111111-204.8-455.111111-455.111111s204.8-455.111111 455.111111-455.111111 455.111111 204.8 455.111111 455.111111-204.8 455.111111-455.111111 455.111111z m0-56.888889c221.866667 0 398.222222-176.355556 398.222222-398.222222s-176.355556-398.222222-398.222222-398.222222-398.222222 176.355556-398.222222 398.222222 176.355556 398.222222 398.222222 398.222222z"
+                                          fill="#ffffff" p-id="1082"></path>
+                                    <path d="M796.444444 512l-455.111111 227.555556V284.444444z" fill="#ffffff"
+                                          p-id="1083"></path>
+                                </svg>
+                            </div>
+                            <div class="speedset">
+                                <label for="defaultRange">速度设置</label>
+                                <input type="range" name="range_speed" id="range_speed" value="30"
+                                       oninput="changeSpeed()"/>
+                                <span id="value1">3.0</span><span>秒</span>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr class="table-info">
+                    <td>课本</td>
+                    <td>单元</td>
+                    <td>课文</td>
+                    <td>听写内容</td>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="../static/js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#maths").removeClass("active");
+        $("#yuwen").removeClass("active");
+        $("#english").addClass("active");
+        $("#play").click(function () {
+            if ($("#play").find("#play-avg").length != 0) {
+                $("#play-avg").replaceWith("<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg id=\"pause-avg\" t=\"1538930776001\" class=\"item_icon\" style=\"\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2602\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"><defs><style type=\"text/css\"></style></defs><path d=\"M515.2 36C251.6 36 36.8 250.8 36.8 514.4s214.8 478.4 478.4 478.4 478.4-214.8 478.4-478.4S778.8 36 515.2 36L515.2 36zM515.2 932.8c-231.2 0-418.4-188-418.4-418.4C96.8 283.6 284.8 96 515.2 96c231.2 0 418.4 188 418.4 418.4C933.6 745.6 746 932.8 515.2 932.8L515.2 932.8z\" p-id=\"2603\" fill=\"#ffffff\"></path><path d=\"M419.2 290.4c-21.2 0-38.8 17.6-38.8 38.8L380.4 700c0 21.2 17.6 38.8 38.8 38.8s38.8-17.2 38.8-38.8L458 329.2C458 308 440.4 290.4 419.2 290.4z\" p-id=\"2604\" fill=\"#ffffff\"></path><path d=\"M611.2 290.4c-21.2 0-38.8 17.6-38.8 38.8L572.4 700c0 21.2 17.6 38.8 38.8 38.8s38.8-17.2 38.8-38.8L650 329.2C650 308 632.4 290.4 611.2 290.4z\" p-id=\"2605\" fill=\"#ffffff\"></path></svg>");
+            }
+            else {
+                $("#pause-avg").replaceWith("<svg id=\"play-avg\" t=\"1538926683646\" class=\"item_icon\" style=\"\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1081\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"><defs><style type=\"text/css\"></style></defs>\n" +
+                    "    <path d=\"M512 967.111111c-250.311111 0-455.111111-204.8-455.111111-455.111111s204.8-455.111111 455.111111-455.111111 455.111111 204.8 455.111111 455.111111-204.8 455.111111-455.111111 455.111111z m0-56.888889c221.866667 0 398.222222-176.355556 398.222222-398.222222s-176.355556-398.222222-398.222222-398.222222-398.222222 176.355556-398.222222 398.222222 176.355556 398.222222 398.222222 398.222222z\" fill=\"#ffffff\" p-id=\"1082\"></path>\n" +
+                    "    <path d=\"M796.444444 512l-455.111111 227.555556V284.444444z\" fill=\"#ffffff\" p-id=\"1083\"></path>\n" +
+                    "</svg>");
+            }
+        });
+        $('input[name="num_radio"]').click(function () {
+            $("#num_input").val(0)
+        });
+        $('#num_input').click(function () {
+            $('input[name="num_radio"]').removeAttr("checked");
+        });
+    });
+
+    function changeSpeed() {
+        var value = $('#range_speed').val();
+        var valStr = value + "% 100%";
+        $('#value1').html((value / 5).toFixed(1));
+        $('#range_speed').css({
+            "background-size": valStr
+        })
+        $("input[name='animat_speed']").val((value / 5).toFixed(1));
+    };
+
+</script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="{% static "/bootstrap/css/bootstrap.css"%}">
+<link rel="stylesheet" type="text/css" href="{% static "/front/css/index.min.css"%}">
+<head>
+    <title>小学听算练习</title>
+</head>
+<body>
+
+<header class="header">
+    <div class="container_header">
+        <a href="">
+        <div class="logo-box"></div>
+        <div class="logo-text">小学听写听算练习</div>
+        </a>
+        <ul class="nav">
+        <li class="active" id="maths"><a href="{% url 'index' %}">数学听算</a></li>
+        <li id="yuwen"><a href="{% url 'yuwen' %}">语文听写</a></li>
+        <li id="english"><a href="{% url 'english' %}">英语听写</a></li>
+    </ul>
+    </div>
+</header>
+{% block main %}
+    内容显示区
+{% endblock %}
+<script type="text/javascript">
+
+
+</script>
+</body>
+</html>
